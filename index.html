@@ -1,18 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-		<title>Connecting to server</title>
-		<script> 
+		<title>Horeca Activity</title>
+		<script>
 			function scan()
 			{
 				cordova.plugins.barcodeScanner.scan(function(result)
 				{
-					alert("We got a barcode\n" +
-					"Result: " + result.text + "\n" +
-					"Format: " + result.format + "\n" +
-					"Cancelled: " + result.cancelled);
+					if(result.cancelled != true)
+					{
+						alert("We got a barcode\n" +
+						"Result: " + result.text + "\n" +
+						"Format: " + result.format + "\n" +
+						"Cancelled: " + result.cancelled);
+					}
 				},
 				function(error)
 				{
@@ -21,7 +27,41 @@
 			}
 		</script>
 	</head>
-	<body>
-		<button onclick="scan();">Scan product</button>
+	<body style="background: rgb(37, 37, 37);">
+
+		<div id="login" data-role="page" data-theme="b">
+			<div data-role="header">
+				<h1>Login</h1>
+			</div>
+
+			<div data-role="main" class="ui-content">
+				<p>Please enter your username and password to proceed.</p>
+				<div class="ui-field-contain">
+					<input id="username" type="text" placeholder="Username">
+					<input id="password" type="password" placeholder="Password">
+				</div>
+				<a class="ui-btn" href="#orders" data-transition="flow">Login</a>
+			</div>
+
+			<div data-role="footer">
+				<h1>&copy; Delano & Moesjarraf 2014</h1>
+			</div>
+		</div>
+
+		<div id="orders" data-role="page" data-dialog="true" data-theme="b">
+			<div data-role="header" data-theme="b">
+				<h1>Orders</h1>
+			</div>
+
+			<div class="ui-content" data-role="main">
+				<p>The orders made by your company are shown below.</p>
+				<button class="ui-btn ui-btn-inline ui-btn-b" onclick="scan();">Scan product</button>
+			</div>
+
+			<div data-role="footer" data-theme="b">
+				<h1>&copy; Delano & Moesjarraf 2014</h1>
+			</div>
+		</div>
+
 	</body>
 </html>
