@@ -6,8 +6,42 @@
 		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script src="http://ec2-54-73-0-85.eu-west-1.compute.amazonaws.com/socket.io/socket.io.js"></script>
 		<title>Horeca Activity</title>
 		<script>
+			var socket;
+			var username;
+			var password;
+
+			$(document).ready(function()
+			{
+			 	socket = io.connect("http://ec2-54-73-0-85.eu-west-1.compute.amazonaws.com");
+			});
+
+			function login()
+			{
+				username = $("#username").val();
+				password = $("#password").val();
+				
+				socket.emit("login",
+				{
+					"username" : username,
+					"password" : password
+				},
+				function(callback)
+				{
+					if(callback.user != null)
+					{
+						alert("Hello " + username + "!");
+						$.mobile.changePage("#orders");
+					}
+					else
+					{
+						alert("You have entered an incorrect username or password");
+					}
+				});
+			}
+
 			function scan()
 			{
 				cordova.plugins.barcodeScanner.scan(function(result)
@@ -38,9 +72,9 @@
 				<p>Please enter your username and password to proceed.</p>
 				<div class="ui-field-contain">
 					<input id="username" type="text" placeholder="Username">
-					<input id="password" type="password" placeholder="Password">
+					<input id="password" type="text" placeholder="Password">
 				</div>
-				<a class="ui-btn" href="#orders" data-transition="flow">Login</a>
+				<button class="ui-btn ui-btn-b" onclick="login();">Login</button>
 			</div>
 
 			<div data-role="footer">
@@ -48,14 +82,14 @@
 			</div>
 		</div>
 
-		<div id="orders" data-role="page" data-dialog="true" data-theme="b">
+		<div id="orders" data-role="page" data-theme="b">
 			<div data-role="header" data-theme="b">
 				<h1>Orders</h1>
 			</div>
 
 			<div class="ui-content" data-role="main">
 				<p>The orders made by your company are shown below.</p>
-				<button class="ui-btn ui-btn-inline ui-btn-b" onclick="scan();">Scan product</button>
+				<button class="ui-btn ui-btn-b" onclick="scan();">Scan product</button>
 			</div>
 
 			<div data-role="footer" data-theme="b">
