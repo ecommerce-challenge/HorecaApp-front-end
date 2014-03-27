@@ -11,6 +11,7 @@ $(document).ready(function()
         $(this).load($(this).attr("include"), function()
         {
             var cpy = $(this).children();
+            $(cpy).append("<br><br><br><br><br><br>");
             $(this).remove();
             $("body").append(cpy);
             $.mobile.changePage("#login");

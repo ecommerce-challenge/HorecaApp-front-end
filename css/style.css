@@ -1,3 +1,141 @@
 body {
-	background: rgb(37, 37, 37);
+	background: #252525;
+	font-size: 13px;
+}
+
+/* Modifications */
+.center {
+	margin: 0 auto !important;
+}
+
+.clearBoth{
+	clear: both !important;
+}
+
+.maxWidth {
+	width: 100% !important;
+}
+
+.blue {
+	background: #3c43ad !important;
+}
+
+.purple {
+	background: #461f70 !important;
+}
+
+.green {
+	background: #446e21 !important;
+}
+
+/* Table button */
+.tableButton {
+	margin: 0 !important;
+	padding: 0 !important;
+	font-size: 12px !important;
+	border: none !important;
+	height: 20px !important;
+	line-height: 20px !important;
+}
+
+/* Table section */
+table.default {
+	width: 100%;
+	table-layout: fixed;
+	font-size: 12px;
+}
+
+table.default, table.default th, table.default td {
+	border-collapse: collapse;
+	border-spacing: 0;
+	padding: 0;
+}
+
+table.default th {
+	border: 1px solid black;
+	background: #1d1d1d;
+	color: white;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+table.default td {
+	color: black;
+	border: 1px solid black;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+table.default tr:nth-child(even) {
+	background: #ffffff;
+}
+
+table.default tr:nth-child(odd) {
+	background: #e4e4e4;
+}
+
+/* PM section */
+.PM {
+	border: 1px solid black;
+	margin-bottom: 10px;
+	display: table;
+}
+
+.PM.sent {
+	float: right;
+	text-align: right;
+}
+
+.PM_sender {
+	max-width: 200px;
+	height: 20px;
+	background: #1d1d1d;
+	color: white;
+	border-bottom: 1px solid black;
+	word-wrap: break-word;
+	text-align: right;
+ 	overflow: hidden;
+ 	white-space: nowrap;
+ 	text-overflow: ellipsis;
+}
+
+.PM_message {
+	max-width: 200px;
+	color: black;
+	background: white;
+	font-size: 13px;
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
+}
+
+.PM_time {
+	float: left;
+	font-size: 10px;
+	vertical-align: middle;
+	margin-top: 3px;
+	margin-right: 20px;
+}
+
+/* Mobile CSS */
+.ui-footer {
+	position: fixed !important;
+	bottom: 0 !important;
+	width: 100% !important;
+	border-top: 1px solid black !important;
+}
+
+.ui-header {
+	border-bottom: 1px solid black !important;
+}
+
+.ui-btn {
+	font-size: 12px !important;
 }

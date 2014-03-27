@@ -1,0 +1,17 @@
+<div id="chat" data-role="page" data-theme="b">
+	<div data-role="main" class="ui-content">
+		<div id="PM_Container"></div>
+	</div>
+
+	<div data-role="footer" data-theme="b">
+		<h1>
+			<input id="chatbox" type="text" placeholder="Message">
+			<div class="center" data-role="controlgroup" data-type="horizontal">
+				<a class="ui-btn" onclick="sendMessage(document.getElementById('chatbox').value);">Send</a>
+				<a class="ui-btn" href="#orders">Orders</a>
+				<a class="ui-btn" href="#users" onclick="updateUserList();">Users</a>
+				<a class="ui-btn blue" href="#login" onclick="logout();">Log out</a>
+			</div>
+		</h1>
+	</div>
+</div>
