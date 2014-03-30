@@ -1,4 +1,5 @@
 var socket;
+var controlPanel;
 
 $(document).ready(function()
 {
@@ -17,4 +18,13 @@ $(document).ready(function()
             $.mobile.changePage("#login");
         });
     });
+});
+
+// before a new "page" is about to be shown
+$(document).on("pagebeforeshow", function()
+{
+    // highlights the button that has the same href as the current url
+    var currentPage = $.mobile.activePage.attr("id");
+    $("[href]").removeClass("active");
+    $("[href=#" + currentPage + "]").addClass("active");
 });

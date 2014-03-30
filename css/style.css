@@ -28,6 +28,14 @@ body {
 	background: #446e21 !important;
 }
 
+.active {
+	background: #535353 !important;
+}
+
+.marginRight {
+	margin-right: 5px !important;
+}
+
 /* Table button */
 .tableButton {
 	margin: 0 !important;
@@ -122,6 +130,11 @@ table.default tr:nth-child(odd) {
 	vertical-align: middle;
 	margin-top: 3px;
 	margin-right: 20px;
+}
+
+/* footer navigation */
+.footerNavigation {
+	margin: 0 auto !important;
 }
 
 /* Mobile CSS */

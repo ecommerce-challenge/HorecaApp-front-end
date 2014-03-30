@@ -6,10 +6,11 @@
 	<div data-role="footer" data-theme="b">
 		<h1>
 			<input id="chatbox" type="text" placeholder="Message">
-			<div class="center" data-role="controlgroup" data-type="horizontal">
-				<a class="ui-btn" onclick="sendMessage(document.getElementById('chatbox').value);">Send</a>
-				<a class="ui-btn" href="#orders">Orders</a>
-				<a class="ui-btn" href="#users" onclick="updateUserList();">Users</a>
+			<div class="footerNavigation" data-role="controlgroup" data-type="horizontal">
+				<a class="ui-btn green" onclick="sendMessage(document.getElementById('chatbox').value);">Send</a>
+				<a class="ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
+				<a class="ui-btn" href="#users" data-transition="slide" data-direction="reverse">Users</a>
+				<a class="ui-btn" href="#chat">Chat</a>
 				<a class="ui-btn blue" href="#login" onclick="logout();">Log out</a>
 			</div>
 		</h1>

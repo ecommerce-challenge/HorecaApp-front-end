@@ -14,6 +14,11 @@ $(document).ready(function()
     });
 });
 
+$(document).on("pagebeforeshow", "#users", function()
+{
+    updateUserList();
+});
+
 function updateUserList()
 {
     $("[href=#users]").removeClass("green");
