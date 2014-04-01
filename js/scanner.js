@@ -13,9 +13,9 @@ function scan()
                 if(callback != null)
                 {
                     alert("Product found!\n" +
-                    "Name: " + callback[0].name + "\n" +
-                    "Price: " + callback[0].price + "\n" +
-                    "Stock: " + callback[0].quantity);
+                    "Name: " + callback[0].item_name + "\n" +
+                    "Brand: " + callback[0].brand + "\n" +
+                    "Description: " + callback[0].description);
                 }
                 else
                 {

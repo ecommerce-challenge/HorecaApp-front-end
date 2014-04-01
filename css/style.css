@@ -42,8 +42,8 @@ body {
 	padding: 0 !important;
 	font-size: 12px !important;
 	border: none !important;
-	height: 20px !important;
-	line-height: 20px !important;
+	height: 30px !important;
+	line-height: 32px !important;
 }
 
 /* Table section */
@@ -51,6 +51,7 @@ table.default {
 	width: 100%;
 	table-layout: fixed;
 	font-size: 12px;
+	color: white;
 }
 
 table.default, table.default th, table.default td {
@@ -61,16 +62,16 @@ table.default, table.default th, table.default td {
 
 table.default th {
 	border: 1px solid black;
-	background: #1d1d1d;
-	color: white;
+	background: #222222;
 	text-align: left;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	height: 30px;
 }
 
 table.default td {
-	color: black;
+	color: white;
 	border: 1px solid black;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -78,11 +79,11 @@ table.default td {
 }
 
 table.default tr:nth-child(even) {
-	background: #ffffff;
+	background: #333333;
 }
 
 table.default tr:nth-child(odd) {
-	background: #e4e4e4;
+	background: #444444;
 }
 
 /* PM section */
@@ -90,6 +91,10 @@ table.default tr:nth-child(odd) {
 	border: 1px solid black;
 	margin-bottom: 10px;
 	display: table;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 .PM.sent {
@@ -100,7 +105,7 @@ table.default tr:nth-child(odd) {
 .PM_sender {
 	max-width: 200px;
 	height: 20px;
-	background: #1d1d1d;
+	background: #3c43ad;
 	color: white;
 	border-bottom: 1px solid black;
 	word-wrap: break-word;
@@ -108,6 +113,9 @@ table.default tr:nth-child(odd) {
  	overflow: hidden;
  	white-space: nowrap;
  	text-overflow: ellipsis;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding: 0 5px;
 }
 
 .PM_message {
@@ -122,6 +130,9 @@ table.default tr:nth-child(odd) {
 	white-space: -moz-pre-wrap; /* Mozilla */
 	white-space: -hp-pre-wrap;  /* HP Printers */
 	word-wrap: break-word;      /* IE 5+ */
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 0 5px;
 }
 
 .PM_time {

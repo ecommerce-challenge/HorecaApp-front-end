@@ -17,8 +17,13 @@ $(document).ready(function()
     });
 });
 
-function getConversation(_contact, _contactFullName)
+$(document).on("pageshow", "#chat", function()
 {
+    $("html, body").animate({ scrollTop: $(document).height() });
+});
+
+function getConversation(_contact, _contactFullName)
+{    
     contact = _contact;
     contactFullName = _contactFullName;
 
