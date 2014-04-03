@@ -5,7 +5,7 @@ function login()
 {
     username = $("#username").val();
     var password = $("#password").val();
-    
+
     socket.emit("login",
     {
         "username" : username,
@@ -15,6 +15,11 @@ function login()
     {
         if(callback.user != null)
         {
+            $("table").each(function()
+            {
+                $(this).find("tr:gt(0)").remove()
+            });
+
             $.mobile.changePage("#orders");
             $("#username").val("");
             $("#password").val("");

@@ -36,6 +36,13 @@ body {
 	margin-right: 5px !important;
 }
 
+.smallPrice {
+	font-size: 9px !important;
+	color: #ababab !important;
+	float: left !important;
+	margin-left: 24px !important;
+}
+
 /* Table button */
 .tableButton {
 	margin: 0 !important;
@@ -76,6 +83,7 @@ table.default td {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	height: 30px;
 }
 
 table.default tr:nth-child(even) {
@@ -162,4 +170,10 @@ table.default tr:nth-child(odd) {
 
 .ui-btn {
 	font-size: 12px !important;
+}
+
+.ui-icon-delete {
+	margin-top: 15px !important;
+	margin-right: 15px !important;
+	background: #73271a !important;
 }

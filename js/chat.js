@@ -26,6 +26,7 @@ function getConversation(_contact, _contactFullName)
 {    
     contact = _contact;
     contactFullName = _contactFullName;
+    $.mobile.loading('show')
 
     socket.emit("getConversation",
     {
@@ -63,6 +64,8 @@ function getConversation(_contact, _contactFullName)
                 $("#PM_Container").append("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span>" + contactFullName + "</div><div class='PM_message'>" + i.message + "</div></div></div>");
             }
         });
+
+        $.mobile.loading('hide')
     });
 }
 
