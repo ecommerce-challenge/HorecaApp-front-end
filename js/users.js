@@ -21,7 +21,7 @@ $(document).on("pageshow", "#users", function()
 
 function updateUserList()
 {
-    $.mobile.loading('show')
+    $.mobile.loading("show");
     $("[href=#users]").removeClass("green");
     socket.emit("getAllUsers",
     function(callback)
@@ -36,6 +36,6 @@ function updateUserList()
             }
         });
 
-        $.mobile.loading('hide')
+        $.mobile.loading("hide");
     });
 }

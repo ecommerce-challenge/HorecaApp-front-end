@@ -36,7 +36,7 @@ function login()
         }
         else
         {
-            alert("You have entered an incorrect username or password");
+            $("#showLoginError").trigger("click");
         }
     });
 }

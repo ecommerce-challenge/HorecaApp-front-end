@@ -26,7 +26,7 @@ function getConversation(_contact, _contactFullName)
 {    
     contact = _contact;
     contactFullName = _contactFullName;
-    $.mobile.loading('show')
+    $.mobile.loading("show");
 
     socket.emit("getConversation",
     {
@@ -65,7 +65,7 @@ function getConversation(_contact, _contactFullName)
             }
         });
 
-        $.mobile.loading('hide')
+        $.mobile.loading("hide");
     });
 }
 

@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script src="js/load.js"></script>
-		<script src="js/login.js"></script>
+		<script src="js/index.js"></script>
 		<script src="js/scanner.js"></script>
 		<script src="js/chat.js"></script>
 		<script src="js/orders.js"></script>
@@ -38,6 +38,18 @@
 					<input id="password" type="password" placeholder="Password">
 				</div>
 				<button class="ui-btn ui-btn-b" onclick="login();">Login</button>
+			</div>
+
+			<a id="showLoginError" href="#loginError" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
+
+			<div data-role="popup" id="loginError" data-theme="b" style="max-width: 400px;">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div data-role="header" data-theme="b">
+					<h1>Error</h1>
+				</div>
+				<div role="main" class="ui-content">
+					<p>The username or password you have entered is incorrect</p>
+				</div>
 			</div>
 
 			<div data-role="footer">

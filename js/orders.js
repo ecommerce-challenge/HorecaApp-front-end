@@ -24,7 +24,7 @@ function updateOrderList()
 
 function getOrderDetails(name)
 {
-    $.mobile.loading('show')
+    $.mobile.loading("show");
     $("#tableOrderDetails").find("tr:gt(0)").remove();
     $("#orderName").text(name);
     $("#showOrderDetails").trigger("click");
@@ -39,6 +39,17 @@ function getOrderDetails(name)
             $("#tableOrderDetails").append("<tr><td>" + i.item_name + "</td><td>" + i.qty + "</td><td>&euro; " + i.amount + " <span class='smallPrice'>&euro; " + i.purchase_rate + " each</span>" + "</td></tr>");
         });
 
-        $.mobile.loading('hide')
+        $.mobile.loading("hide");
     });
+}
+
+function showKart()
+{
+    $.mobile.loading("show");
+    $("#scannedProduct").popup("close");
+    setTimeout(function()
+    {
+        $("#showKart").trigger("click");
+    }, 300);
+    $.mobile.loading("hide");
 }

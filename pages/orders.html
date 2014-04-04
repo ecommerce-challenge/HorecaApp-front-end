@@ -9,9 +9,35 @@
 		</table>
 	</div>
 
-	<a id="showOrderDetails" style="" href="#orderDetails" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
+	<a id="showScannedProduct" href="#scannedProduct" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
 
-	<div data-role="popup" id="orderDetails" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+	<div data-role="popup" id="scannedProduct" data-overlay-theme="b" data-theme="b" data-dismissible="false">
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+		<div data-role="header" data-theme="b">
+			<h1 id="scannedProductHeader"><span id="scannedProductBrand" style="color: #90ccff;"></span><span id="scannedProductName"></span></h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div id="scannedProductDescription" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;"></div>
+			<a class="ui-btn" onclick="showKart();">Add product to cart</a>
+		</div>
+	</div>
+
+	<a id="showKart" href="#kart" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
+
+	<div data-role="popup" id="kart" data-overlay-theme="b" data-theme="b" data-dismissible="false">
+		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+		<div data-role="header" data-theme="b">
+			<h1>My kart</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div id="kartContents" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;">This does not work yet, products in kart will be shown here.</div>
+			<a class="ui-btn">Send order</a>
+		</div>
+	</div>
+
+	<a id="showOrderDetails" href="#orderDetails" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
+
+	<div data-role="popup" id="orderDetails" data-overlay-theme="b" data-theme="b" data-dismissible="false">
 		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 		<div data-role="header" data-theme="b">
 			<h1>Order Details <span id="orderName"></span></h1>
@@ -34,6 +60,7 @@
 				<a class="ui-btn" href="#orders">Orders</a>
 				<a class="ui-btn" href="#users" data-transition="slide">Users</a>
 				<a class="ui-btn green" onclick="scan();">Scan</a>
+				<a class="ui-btn green" href="#kart" data-rel="popup" data-position-to="window" data-transition="slidedown">Kart</a>
 			</div>
 		</h1>
 	</div>

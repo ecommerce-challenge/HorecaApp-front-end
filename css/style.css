@@ -177,3 +177,8 @@ table.default tr:nth-child(odd) {
 	margin-right: 15px !important;
 	background: #73271a !important;
 }
+
+.ui-header .ui-title {
+    margin-right: 10%;
+    margin-left: 10%;
+}
