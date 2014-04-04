@@ -27,7 +27,6 @@ function getOrderDetails(name)
     $.mobile.loading("show");
     $("#tableOrderDetails").find("tr:gt(0)").remove();
     $("#orderName").text(name);
-    $("#showOrderDetails").trigger("click");
 
     socket.emit("getOrderDetails", name,
     function(callback)
@@ -40,7 +39,9 @@ function getOrderDetails(name)
         });
 
         $.mobile.loading("hide");
+        $("#showOrderDetails").trigger("click");
     });
+
 }
 
 function showKart()

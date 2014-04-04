@@ -14,6 +14,7 @@ function scan()
             {
                 if(callback != null)
                 {
+                    $("#showKartBtn").show();
                     $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductName").text(" - " + callback[0].item_name);
                     $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductBrand").text("[" + callback[0].brand + "]");
                     $("#scannedProduct").find(".ui-content").find("#scannedProductDescription").text(callback[0].description);
@@ -21,8 +22,10 @@ function scan()
                 }
                 else
                 {
-                    $("#scannedProduct").find("#scannedProductHeader").text("Product not found");
-                    $("#scannedProduct").find(".ui-content").text("The product with barcode: " + result.text + " was not found, please make sure that the barcode isn't damaged.");
+                    $("#showKartBtn").hide();
+                    $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductName").text("Product not found");
+                    $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductBrand").text("");
+                    $("#scannedProduct").find(".ui-content").find("#scannedProductDescription").text("The product with barcode: " + result.text + " was not found, please make sure that the barcode isn't damaged.");
                     $("#showScannedProduct").trigger("click");
                 }
 
