@@ -5,7 +5,7 @@ $(document).on("pageshow", "#orders", function()
 
 function updateOrderList()
 {
-    $.mobile.loading('show')
+    $.mobile.loading('show');
 
     socket.emit("getAllOrders",
     function(callback)
@@ -18,7 +18,7 @@ function updateOrderList()
             $("#tableOrders tbody").append(row);
         });
 
-        $.mobile.loading('hide')
+        $.mobile.loading('hide');
     });
 }
 

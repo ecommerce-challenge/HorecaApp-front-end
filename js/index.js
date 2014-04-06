@@ -5,6 +5,7 @@ function login()
 {
     username = $("#username").val();
     var password = $("#password").val();
+    $.mobile.loading("show");
 
     socket.emit("login",
     {
@@ -38,6 +39,8 @@ function login()
         {
             $("#showLoginError").trigger("click");
         }
+
+        $.mobile.loading("hide");
     });
 }
 
