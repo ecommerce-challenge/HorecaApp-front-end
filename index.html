@@ -4,7 +4,7 @@
 		<!-- external dependencies -->
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 		<script src="http://ec2-54-73-0-85.eu-west-1.compute.amazonaws.com/socket.io/socket.io.js"></script>
 
@@ -13,9 +13,9 @@
 		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script src="js/load.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/orders.js"></script>
 		<script src="js/scanner.js"></script>
 		<script src="js/chat.js"></script>
-		<script src="js/orders.js"></script>
 		<script src="js/users.js"></script>
 		<script src="js/swipes.js"></script>
 
@@ -25,6 +25,7 @@
 		<div include="pages/chat.html"></div>
 		<div include="pages/users.html"></div>
 		<div include="pages/orders.html"></div>
+		<div include="pages/cart.html"></div>
 		
 		<div id="login" data-role="page" data-theme="b">
 			<div data-role="header">
@@ -45,7 +46,7 @@
 			<div data-role="popup" id="loginError" data-theme="b" style="max-width: 400px;">
 				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 				<div data-role="header" data-theme="b">
-					<h1>Error</h1>
+					<h1>Failed to login</h1>
 				</div>
 				<div role="main" class="ui-content">
 					<p>The username or password you have entered is incorrect</p>

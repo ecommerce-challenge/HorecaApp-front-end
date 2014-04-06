@@ -13,6 +13,16 @@ a {
 }
 
 /* Modifications */
+.tableHeader {
+	background: #1d1d1d !important;
+	font-weight: bold !important;
+	text-align: center !important;
+}
+
+.smallRow {
+	height: 20px !important;
+}
+
 .center {
 	margin: 0 auto !important;
 }
@@ -48,8 +58,18 @@ a {
 .smallPrice {
 	font-size: 9px !important;
 	color: #ababab !important;
-	float: left !important;
-	margin-left: 24px !important;
+}
+
+.required {
+	background: #6a1a1a !important;
+}
+
+.noBorder {
+	border: none !important;
+}
+
+.border {
+	border: 1px solid black !important;
 }
 
 /* Table button */
@@ -60,6 +80,14 @@ a {
 	border: none !important;
 	height: 30px !important;
 	line-height: 32px !important;
+}
+
+/* Table textfield */
+.tableTextfield {
+	height: 100% !important;
+	border: none !important;
+	color: white !important;
+	background: #494949;
 }
 
 /* Table section */
@@ -185,6 +213,8 @@ table.default tr:nth-child(odd) {
 	margin-top: 15px !important;
 	margin-right: 15px !important;
 	background: #73271a !important;
+	width: 22px !important;
+	height: 22px !important;
 }
 
 .ui-header .ui-title {

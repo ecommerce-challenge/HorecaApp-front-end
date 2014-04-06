@@ -18,12 +18,6 @@ $(document).ready(function()
             $.mobile.changePage("#login");
         });
     });
-
-    // open keyboard and set focus to username textfield
-    setTimeout(function()
-    {
-        $('#username').focus();
-    }, 1000);
 });
 
 // before a new "page" is about to be shown

@@ -24,3 +24,12 @@ $(document).on("pagecreate", "#chat", function()
         $.mobile.changePage("#users", {transition : "slide", reverse: true});
     });
 });
+
+$(document).on("pagecreate", "#cart", function()
+{
+    // when swiping in page: cart
+    $("#cart").on("swiperight", function()
+    {
+        $.mobile.changePage("#orders", {transition : "slide", reverse: true});
+    });
+});

@@ -14,20 +14,23 @@ function scan()
             {
                 if(callback != null)
                 {
-                    $("#showKartBtn").show();
+                    $("#addToCart").attr("onclick", "addToCart(" + JSON.stringify(callback[0]) + ");");
+                    $("#addToCart").show();
                     $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductName").text(" - " + callback[0].item_name);
                     $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductBrand").text("[" + callback[0].brand + "]");
                     $("#scannedProduct").find(".ui-content").find("#scannedProductDescription").text(callback[0].description);
-                    $("#showScannedProduct").trigger("click");
                 }
                 else
                 {
-                    $("#showKartBtn").hide();
+                    $("#addToCart").removeAttr("onclick");
+                    $("#addToCart").hide();
                     $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductName").text("Product not found");
                     $("#scannedProduct").find("#scannedProductHeader").find("#scannedProductBrand").text("");
                     $("#scannedProduct").find(".ui-content").find("#scannedProductDescription").text("The product with barcode: " + result.text + " was not found, please make sure that the barcode isn't damaged.");
-                    $("#showScannedProduct").trigger("click");
+                    
                 }
+
+                $("#showScannedProduct").trigger("click");
 
                 $.mobile.loading("hide");
             });
