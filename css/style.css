@@ -1,3 +1,7 @@
+* {
+	text-shadow: none !important;
+}
+
 html {
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
