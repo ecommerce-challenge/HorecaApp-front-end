@@ -11,8 +11,9 @@ $(document).ready(function()
         }
         else
         {
-            $("#PM_Container").append("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + data.time + "</span>" + contactFullName + "</div><div class='PM_message'>" + data.message + "</div></div></div>");
-            $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+            var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + data.time + "</span>" + contactFullName + "</div><div class='PM_message'></div></div></div>");
+            $(PM).find(".PM_message").text(data.message);
+            $("#PM_Container").append(PM);
         }
     });
 });
@@ -57,11 +58,15 @@ function getConversation(_contact, _contactFullName)
         {
             if(i.type == "sent")
             {
-                $("#PM_Container").append("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span>" + fullName + "</div><div class='PM_message'>" + i.message + "</div></div></div>");
+                var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span>" + fullName + "</div><div class='PM_message'></div></div></div>");
+                $(PM).find(".PM_message").text(i.message);
+                $("#PM_Container").append(PM);
             }
             else
             {
-                $("#PM_Container").append("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span>" + contactFullName + "</div><div class='PM_message'>" + i.message + "</div></div></div>");
+                var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span>" + fullName + "</div><div class='PM_message'></div></div></div>");
+                $(PM).find(".PM_message").text(i.message);
+                $("#PM_Container").append(PM);
             }
         });
 
@@ -82,7 +87,9 @@ function sendMessage(message)
         },
         function(callback)
         {
-            $("#PM_Container").append("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + callback.time + "</span>" + fullName + "</div><div class='PM_message'>" + callback.message + "</div></div></div>");
+            var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + callback.time + "</span>" + fullName + "</div><div class='PM_message'></div></div></div>");
+            $(PM).find(".PM_message").text(callback.message);
+            $("#PM_Container").append(PM);
             $("html, body").animate({ scrollTop: $(document).height() }, "slow");
         });
     }
