@@ -72,7 +72,7 @@ function addToCart(product)
 {
     $("#scannedProduct").popup("close");
     var date = new Date();
-    var today = date.getFullYear() + "-" + date.getMonth();
+    var today = date.getFullYear() + "-mm-dd";
     $("#tableCart tbody").append("<tr class='border'><td class='item_code tableHeader smallRow noBorder'><input class='tableTextfield' type='hidden' value='" + product.item_code + "'>" + product.item_name + "</td><td class='quantity smallRow noBorder'><input class='tableTextfield maxWidth' type='text' placeholder='Quantity'></td><td class='rate smallRow noBorder'><input class='tableTextfield maxWidth' type='text' placeholder='Rate'></td><td class='date smallRow noBorder'><input class='tableTextfield maxWidth' type='text' placeholder='yyyy-mm-dd' value='" + today + "'></td><td class='noBorder'><a class='ui-btn tableButton maxWidth' onclick='removeFromCart(this);'>Remove</a></td></tr>");
     checkCartEmpty();
 }
