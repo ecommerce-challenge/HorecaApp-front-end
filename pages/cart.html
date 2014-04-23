@@ -19,7 +19,7 @@
 
 	<a id="showCustomizeOrder" href="#customizeOrder" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
 
-	<div data-role="popup" id="customizeOrder" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="width: 200px; max-width: 200px;">
+	<div data-role="popup" id="customizeOrder" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="width: 300px; max-width: 300px;">
 		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 		<div data-role="header" data-theme="b">
 			<h1>Customize order</h1>
@@ -41,7 +41,7 @@
 	<div data-role="popup" id="scannedProduct" data-overlay-theme="b" data-theme="b" data-dismissible="false">
 		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 		<div data-role="header" data-theme="b">
-			<h1 id="scannedProductHeader"><span id="scannedProductBrand" style="color: #90ccff;"></span><span id="scannedProductName"></span></h1>
+			<h1 id="scannedProductHeader"><span id="scannedProductBrand" class="brand"></span><span id="scannedProductName"></span></h1>
 		</div>
 		<div role="main" class="ui-content">
 			<div id="scannedProductImage" style="display: none;"></div>
@@ -55,7 +55,9 @@
 			<div class="footerNavigation" data-role="controlgroup" data-type="horizontal">
 				<a class="ui-btn blue" href="#login" onclick="logout();">Log out</a>
 				<a class="ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
-				<a class="ui-btn green" onclick="alert('Under construction, use scan product for now.');">Search</a>
+				<a class="ui-btn" href="#users" data-transition="slide">Users</a>
+				<a class="ui-btn" href="#cart">Cart</a>
+				<a class="ui-btn" href="#items">Search</a>
 				<a class="ui-btn green" onclick="scan();">Scan</a>
 				<a class="ui-btn green" onclick="addCartToOrder();">Create order</a>
 			</div>

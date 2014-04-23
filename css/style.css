@@ -17,6 +17,10 @@ a {
 }
 
 /* Modifications */
+.selected {
+	background: #696c8f !important;
+}
+
 .tableHeader {
 	background: #1d1d1d !important;
 	font-weight: bold !important;
@@ -55,6 +59,10 @@ a {
 	background: #535353 !important;
 }
 
+.brand {
+	color: #90ccff !important;
+}
+
 .marginRight {
 	margin-right: 5px !important;
 }
@@ -76,6 +84,10 @@ a {
 	border: 1px solid black !important;
 }
 
+.borderRight {
+	border-right: 1px solid black !important;
+}
+
 /* Table button */
 .tableButton {
 	margin: 0 !important;
@@ -94,12 +106,42 @@ a {
 	background: #494949;
 }
 
+/* Table items */
+.image {
+	background-size : 100% 100%,
+	background-repeat : no-repeat
+}
+
+.imageColumn {
+	width: 80px !important;
+}
+
+.itemHeader {
+	width: 100% !important;
+	height: 16px !important;
+	background: #1d1d1d !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+}
+
+.itemDescription {
+	width: 100% !important;
+	height: 50px !important;
+	vertical-align: top !important;
+	padding: 7px !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+}
+
 /* Table section */
 table.default {
 
 	width: 100%;
 	font-size: 12px;
 	color: white;
+	table-layout: fixed;
 }
 
 table.default, table.default th, table.default td {
@@ -189,7 +231,15 @@ table.default tr:nth-child(odd) {
 	font-size: 10px;
 	vertical-align: middle;
 	margin-top: 3px;
-	margin-right: 20px;
+	margin-right: 10px;
+}
+
+.PM_name {
+	float: right;
+	max-width: 83px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 /* footer navigation */
@@ -210,7 +260,15 @@ table.default tr:nth-child(odd) {
 }
 
 .ui-btn {
+	font-size: 8px !important;
+	padding-left: 4px !important;
+	padding-right: 4px !important;
+}
+
+.ui-icon-delete {
 	font-size: 9px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 
 .ui-icon-delete {

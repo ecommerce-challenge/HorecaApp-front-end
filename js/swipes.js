@@ -14,6 +14,11 @@ $(document).on("pagecreate", "#users", function()
     {
         $.mobile.changePage("#orders", {transition : "slide", reverse: true});
     });
+
+    $("#users").on("swipeleft", function()
+    {
+        $.mobile.changePage("#cart", {transition : "slide"});
+    });
 });
 
 $(document).on("pagecreate", "#chat", function()
@@ -30,6 +35,20 @@ $(document).on("pagecreate", "#cart", function()
     // when swiping in page: cart
     $("#cart").on("swiperight", function()
     {
-        $.mobile.changePage("#orders", {transition : "slide", reverse: true});
+        $.mobile.changePage("#users", {transition : "slide", reverse: true});
+    });
+
+    $("#cart").on("swipeleft", function()
+    {
+        $.mobile.changePage("#items", {transition : "slide"});
+    });
+});
+
+$(document).on("pagecreate", "#items", function()
+{
+    // when swiping in page: cart
+    $("#items").on("swiperight", function()
+    {
+        $.mobile.changePage("#cart", {transition : "slide", reverse: true});
     });
 });

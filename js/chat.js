@@ -58,13 +58,13 @@ function getConversation(_contact, _contactFullName)
         {
             if(i.type == "sent")
             {
-                var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span>" + fullName + "</div><div class='PM_message'></div></div></div>");
+                var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span><span class='PM_name'>" + fullName + "</span></div><div class='PM_message'></div></div></div>");
                 $(PM).find(".PM_message").text(i.message);
                 $("#PM_Container").append(PM);
             }
             else
             {
-                var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span>" + fullName + "</div><div class='PM_message'></div></div></div>");
+                var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + i.time + "</span><span class='PM_name'>" + contactFullName + "</span></div><div class='PM_message'></div></div></div>");
                 $(PM).find(".PM_message").text(i.message);
                 $("#PM_Container").append(PM);
             }
@@ -76,6 +76,8 @@ function getConversation(_contact, _contactFullName)
 
 function sendMessage(message)
 {
+    $("#chatbox").focus();
+    
     if($.trim(message) != "")
     {
         $("#chatbox").val("");

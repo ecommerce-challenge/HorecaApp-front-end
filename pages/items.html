@@ -1,0 +1,22 @@
+<div id="items" data-role="page" data-theme="b">
+	<div class="ui-content" data-role="main">
+		<div id="itemContents" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;">
+			<table class="default" id="tableItems">
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+
+	<div data-role="footer" data-theme="b" data-position="fixed" data-tap-toggle="false">
+		<h1>
+			<div class="footerNavigation" data-role="controlgroup" data-type="horizontal">
+				<a class="ui-btn blue" href="#login" onclick="logout();">Log out</a>
+				<a class="ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
+				<a class="ui-btn" href="#users" data-transition="slide" data-direction="reverse">Users</a>
+				<a class="ui-btn" href="#cart" data-transition="slide" data-direction="reverse">Cart</a>
+				<a class="ui-btn" href="#items" data-transition="slide">Search</a>
+				<a class="ui-btn green" onclick="addItems();">Add to cart</a>
+			</div>
+		</h1>
+	</div>
+</div>
