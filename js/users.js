@@ -2,13 +2,13 @@ $(document).ready(function()
 {
     socket.on("getUsers", function(data)
     {
-        $("#tableUsers").find("tr:gt(0)").remove();
+        $("#tableUsers tbody tr").remove();
 
         data.forEach(function(i)
         {
             if(i.username != username)
             {
-                $("#tableUsers").append("<tr><td>" + i.firstName + "</td><td>" + i.lastName + "</td><td>" + i.role + "</td><td>" + i.status + "</td><td><a class='ui-btn tableButton' href='#chat' data-transition='flow' onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");'>Chat</a></td></tr>");
+                $("#tableUsers tbody").append("<tr onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");' class='border'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.firstName + " " + i.lastName + "</span><span class='floatRight brand bold marginTop'>[" + i.status + "]</span></td></tr>");
             }
         });
     });
@@ -26,13 +26,13 @@ function updateUserList()
     socket.emit("getAllUsers",
     function(callback)
     {
-        $("#tableUsers").find("tr:gt(0)").remove();
+        $("#tableUsers tbody tr").remove();
 
         callback.forEach(function(i)
         {
             if(i.username != username)
             {
-                $("#tableUsers").append("<tr><td>" + i.firstName + "</td><td>" + i.lastName + "</td><td>" + i.role + "</td><td>" + i.status + "</td><td><a class='ui-btn tableButton' href='#chat' data-transition='flow' onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");'>Chat</a></td></tr>");
+                $("#tableUsers tbody").append("<tr onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");' class='border'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.firstName + " " + i.lastName + "</span><span class='floatRight brand bold marginTop'>[" + i.status + "]</span></td></tr>");
             }
         });
 

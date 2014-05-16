@@ -12,11 +12,18 @@ function updateOrderList()
     {
         $("#tableOrders").find("tr:gt(0)").remove();
 
-        callback.values.forEach(function(i)
+        if(callback != null)
         {
-            var row = "<tr onclick='getOrderDetails(" + JSON.stringify(i[3]) + ")'><td>" + i[3] + "</td><td>" + i[0] + "</td><td>" + i[2] + "</td></tr>";
-            $("#tableOrders tbody").append(row);
-        });
+            callback.values.forEach(function(i)
+            {
+                var row = "<tr onclick='getOrderDetails(" + JSON.stringify(i[3]) + ")'><td>" + i[3] + "</td><td>" + i[0] + "</td><td>" + i[2] + "</td></tr>";
+                $("#tableOrders tbody").append(row);
+            });
+        }
+        else
+        {
+            alert("Failed to get the list of orders. Please try again later.");
+        }
 
         $.mobile.loading('hide');
     });
@@ -180,6 +187,7 @@ function sendOrder()
         {
             alert("Failed to inert the order into ERPNext, please try again.");
         }
+        
         $.mobile.loading('hide')
     });
 }

@@ -19,7 +19,7 @@ function searchItems()
 
                 if(i[5] != null)
                 {
-                    var image = "http://jesperhoreca.erpnext.com/" + i[5];
+                    var image = "https://horecajeppie.frappecloud.com/" + i[5];
 
                     $(tableRow).find(".imageColumn").find(".image").css
                     ({

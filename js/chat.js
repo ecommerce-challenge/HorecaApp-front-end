@@ -71,6 +71,8 @@ function getConversation(_contact, _contactFullName)
         });
 
         $.mobile.loading("hide");
+
+        $.mobile.changePage("#chat", {transition : "flow"});
     });
 }
 
@@ -81,6 +83,7 @@ function sendMessage(message)
     if($.trim(message) != "")
     {
         $("#chatbox").val("");
+        
         socket.emit("sendMessage",
         {
             "currentUser" : username,
