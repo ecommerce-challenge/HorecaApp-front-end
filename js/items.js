@@ -7,19 +7,22 @@ function searchItems()
 {
     $.mobile.loading("show");
 
-    socket.emit("getAllItems", function(callback)
+    socket.emit("getItems", function(callback)
     {
         $("#tableItems tbody tr").remove();
         
         if(callback != null)
         {
-            callback.values.forEach(function(i)
+            callback.data.forEach(function(i)
             {
-                var tableRow = $.parseHTML("<tr class='selectable'><td class='imageColumn'><input class='it_item_name' type='hidden' value='" + i[1] + "'></input><input type='hidden' class='it_item_code' value='" + i[4] + "'></input><div class='image'></div></td><td><div class='itemHeader'><span class='brand'>" + i[2] + "</span> - " + i[1] + " <span class='smallPrice'>[" + i[3] + "]</span></div><div class='itemDescription'>" + i[0] + "</div></td></tr>");
+                var tableRow = $.parseHTML("<tr class='selectable'><td class='imageColumn'><input class='it_item_name' type='hidden' value='" + i.item_name + "'></input><input type='hidden' class='it_item_code' value='" + i.item_code + "'></input><div class='image'></div></td><td><div class='itemHeader'><span class='brand'>" + i.brand + "</span> - " + i.item_name + " <span class='smallPrice'>[" + i.barcode + "]</span></div><div class='itemDescription'>" + i.description + "</div></td></tr>");
 
-                if(i[5] != null)
+                if(i.image != null)
                 {
-                    var image = "https://horecajeppie.frappecloud.com/" + i[5];
+                    var image = i.image;
+
+                    if(i.image.substring(1, 6) == "files")
+                        var image = "https://horecajeppie.frappecloud.com" + i.image;
 
                     $(tableRow).find(".imageColumn").find(".image").css
                     ({

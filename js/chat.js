@@ -11,9 +11,10 @@ $(document).ready(function()
         }
         else
         {
-            var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + data.time + "</span>" + contactFullName + "</div><div class='PM_message'></div></div></div>");
+            var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + data.time + "</span><span class='PM_name'>" + contactFullName + "</span></div><div class='PM_message'></div></div></div>");
             $(PM).find(".PM_message").text(data.message);
             $("#PM_Container").append(PM);
+            $("html, body").animate({ scrollTop: $(document).height() }, "slow");
         }
     });
 });
@@ -92,7 +93,7 @@ function sendMessage(message)
         },
         function(callback)
         {
-            var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + callback.time + "</span>" + fullName + "</div><div class='PM_message'></div></div></div>");
+            var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM sent'><div class='PM_sender showPM'><span class='PM_time'>" + callback.time + "</span><span class='PM_name'>" + fullName + "</span></div><div class='PM_message'></div></div></div>");
             $(PM).find(".PM_message").text(callback.message);
             $("#PM_Container").append(PM);
             $("html, body").animate({ scrollTop: $(document).height() }, "slow");

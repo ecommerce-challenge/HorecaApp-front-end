@@ -87,16 +87,24 @@ function addCartToOrder()
         {
             $.mobile.loading("show");
 
-            socket.emit("getSupplierNames", {},
+            socket.emit("getSuppliers",
             function(callback)
             {
-                $("#selectSupplier").find("option:gt(0)").remove();
-                callback.values.forEach(function(i)
+                if(callback != null)
                 {
-                    $("#selectSupplier").append("<option value='" + i + "'>" + i + "</option>");
-                });;
+                    $("#selectSupplier").find("option:gt(0)").remove();
+                    callback.data.forEach(function(i)
+                    {
+                        $("#selectSupplier").append("<option value='" + i.name + "'>" + i.name + "</option>");
+                    });;
 
-                $("#showCustomizeOrder").trigger("click");
+                    $("#showCustomizeOrder").trigger("click");
+                }
+                else
+                {
+                    alert("Failed to fetch to suppliers. Please try again later.");
+                }
+
                 $.mobile.loading("hide");
             });
         }
@@ -107,40 +115,38 @@ function sendOrder()
 {
     $("#customizeOrder").popup("close");
 
-    var doclist = [];
     var supplier = $("#selectSupplier").val();
+    var data = {"supplier" : supplier};
+    var po_details = [];
     
-    doclist.push({"doctype" : "Purchase Order", "company" : "Jesper Horeca", "supplier" : supplier});
-
     $("#tableCart tr:gt(0)").each(function()
     {
         var item_code = $(this).find(".item_code").find(".tableTextfield").val();
         var quantity = $(this).find(".quantity").find(".tableTextfield").val();
         var rate = $(this).find(".rate").find(".tableTextfield").val();
         var date = $(this).find(".date").find(".tableTextfield").val();
-        doclist.push({"qty" : quantity, "import_rate" : rate, "doctype" : "Purchase Order Item", "item_code" : item_code, "parentfield" : "po_details", "schedule_date" : date});
+        po_details.push({"item_code" : item_code, "qty" : quantity, "rate" : rate, "schedule_date" : date});
     });
 
+    data["po_details"] = po_details;
     $.mobile.loading('show')
-    socket.emit("insertOrder", doclist,
+
+    socket.emit("insertPurchaseOrder", data,
     function(callback)
     {
         if(callback != null)
         {
             $("#tableCart").find("tr:gt(0)").remove();
-
-            $("#selectSupplier").val("None").attr("selected", true).siblings("option").removeAttr("selected");
-            $("#selectSupplier").selectmenu("refresh", true);
-
+            $("#selectSupplier").val("");
             checkCartEmpty();
             updateOrderList();
             $.mobile.changePage("#orders", {transition : "slide", reverse: true});
         }
         else
         {
-            alert("Failed to insert the order into ERPNext, please try again.");
+            alert("Failed to inert the order into ERPNext, please try again.");
         }
-
+        
         $.mobile.loading('hide')
     });
 }

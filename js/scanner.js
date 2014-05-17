@@ -6,22 +6,23 @@ function scan()
         {
             $.mobile.loading("show");
 
-            socket.emit("scanProduct",
-            {
-                "barcode" : result.text
-            },
+            socket.emit("scanItem", result.text,
             function(callback)
             {
                 if(callback != null)
                 {
-                    $("#addToCart").attr("onclick", "addToCart(" + JSON.stringify(callback[0]) + ");");
+                    $("#addToCart").attr("onclick", "addToCart(" + JSON.stringify(callback.data) + ");");
                     $("#addToCart").show();
-                    $("#scannedProductName").text(" - " + callback[0].item_name);
-                    $("#scannedProductBrand").text("[" + callback[0].brand + "]");
+                    $("#scannedProductName").text(" - " + callback.data.item_name);
+                    $("#scannedProductBrand").text("[" + callback.data.brand + "]");
                     
-                    if(callback[0].image != null)
+                    if(callback.data.image != null)
                     {
-                        var image = "http://jesperhoreca.erpnext.com/" + callback[0].image;
+                        var image = callback.data.image;
+
+                        if(callback.data.image.substring(1, 6) == "files")
+                            var image = "https://horecajeppie.frappecloud.com" + callback.data.image;
+
                         $("#scannedProductImage").css
                         ({
                             "display" : "",
@@ -40,7 +41,7 @@ function scan()
                         $("#scannedProductImage").css({"display" : "none", "background" : "none"});
                     }
 
-                    $("#scannedProductDescription").text(callback[0].description);
+                    $("#scannedProductDescription").text(callback.data.description);
                 }
                 else
                 {
