@@ -26,8 +26,8 @@ $(document).on("pagehide", "#users", function()
 
 function updateUserList()
 {
-    $.mobile.loading("show");
     $("[href=#users]").removeClass("cyan");
+    $.mobile.loading("show");
 
     socket.emit("getAllUsers",
     function(callback)
@@ -59,8 +59,8 @@ function updateUserList()
                     $("#tableUsers tbody").append(tr);
                 }
             });
-        });
 
-        $.mobile.loading("hide");
+            $.mobile.loading("hide");
+        });
     });
 }

@@ -5,6 +5,8 @@ $(document).ready(function()
 {
     socket.on("messageReceived", function(data)
     {
+        updateUserList();
+
     	if(contact == data.sender && $.mobile.activePage.attr("id") == "chat")
     	{
             var PM = $.parseHTML("<div class='maxWidth clearBoth'><div class='PM received'><div class='PM_sender showPM'><span class='PM_time'>" + data.time + "</span><span class='PM_name'>" + contactFullName + "</span></div><div class='PM_message'></div></div></div>");
@@ -27,6 +29,12 @@ $(document).on("pageshow", "#chat", function()
 
 $(document).on("pagehide", "#chat", function()
 {
+    socket.emit("markAsRead",
+    {
+        "currentUser" : username,
+        "sender" : contact
+    });
+    
     contact = null;
     contactFullName = null;
 });
