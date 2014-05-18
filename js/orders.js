@@ -10,13 +10,13 @@ function updateOrderList()
     socket.emit("getPurchaseOrders",
     function(callback)
     {
-        $("#tableOrders").find("tr:gt(0)").remove();
+        $("#tableOrders tbody tr").remove();
 
         if(callback != null)
         {
             callback.data.forEach(function(i)
             {
-                var row = "<tr onclick='getOrderDetails(" + JSON.stringify(i.name) + ")'><td>" + i.name + "</td><td>" + i.supplier + "</td><td>" + i.creation.substring(0, 19) + "</td></tr>";
+                var row = "<tr class='border' onclick='getOrderDetails(" + JSON.stringify(i.name) + ")'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.name + " <span class='bold brand'>[" + i.supplier + "]</span></span><span class='floatRight smallPrice bold marginTop'>" + i.creation.substring(0, 19) + "</span></td></tr>";
                 $("#tableOrders tbody").append(row);
             });
         }
@@ -32,20 +32,25 @@ function updateOrderList()
 function getOrderDetails(name)
 {
     $.mobile.loading("show");
-    $("#tableOrderDetails").find("tr:gt(0)").remove();
-    $("#orderName").text(name);
+    $.mobile.changePage("#order_details", {transition : "slide"});
+    $("#h1_orderDetails").text("Order details -> " + name);
+    $("#tableOrderDetails tbody tr").remove();
 
     socket.emit("getPurchaseOrder", name,
     function(callback)
     {
-        $("#tableOrderDetails").find("tr:gt(0)").remove();
-
-        callback.data.po_details.forEach(function(i)
+        if(callback != null)
         {
-            $("#tableOrderDetails tbody").append("<tr class='border'><td class='tableHeader smallRow noBorder'>" + i.item_name + "</td><td class='smallRow noBorder'><b>Quantity: </b> " + i.qty + "</td><td class='smallRow noBorder'><b>Price: </b>&euro; " + i.amount + " <span class='smallPrice'>&euro; " + i.rate + " each</span>" + "</td></tr>");
-        });
+            callback.data.po_details.forEach(function(i)
+            {
+                $("#tableOrderDetails tbody").append("<tr class='border'><td class='tableHeader smallRow noBorder'>" + i.item_name + "</td><td class='smallRow noBorder'><b>Quantity: </b> " + i.qty + "</td><td class='smallRow noBorder'><b>Price: </b>&euro; " + i.amount + " <span class='smallPrice'>&euro; " + i.rate + " each</span>" + "</td></tr>");
+            });
+        }
+        else
+        {
+            alert("Failed to get the details of this order. Please try again later.");
+        }
 
         $.mobile.loading("hide");
-        $("#showOrderDetails").trigger("click");
     });
 }

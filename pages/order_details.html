@@ -1,11 +1,10 @@
-<div id="orders" data-role="page" data-theme="b">
+<div id="order_details" data-role="page" data-theme="b">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
+		<h1 id="h1_orderDetails">Order details</h1>
+	</div>
+
 	<div class="ui-content" data-role="main">
-		<table data-role="table" data-mode="reflow" class="default" id="tableOrders">
-			<thead>
-				<tr>
-					<th data-priority="persist">Order</th>
-				</tr>
-			</thead>
+		<table data-role="table" data-mode="reflow" class="default" id="tableOrderDetails">
 			<tbody></tbody>
 		</table>
 	</div>
@@ -14,10 +13,10 @@
 		<h1>
 			<div class="footerNavigation" data-role="controlgroup" data-type="horizontal">
 				<a class="ui-btn blue" href="#login" onclick="logout();">Log out</a>
-				<a class="ui-btn" href="#orders">Orders</a>
+				<a class="ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
+				<a class="ui-btn" href="#order_details">Order Details</a>
 				<a class="ui-btn" href="#users" data-transition="slide">Users</a>
 				<a class="ui-btn" href="#cart" data-transition="slide" onclick="checkCartEmpty();">Cart</a>
-				<a class="ui-btn green" onclick="updateOrderList();">Refresh</a>
 			</div>
 		</h1>
 	</div>
