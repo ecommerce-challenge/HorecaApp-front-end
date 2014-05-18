@@ -19,21 +19,46 @@ $(document).on("pageshow", "#users", function()
     updateUserList();
 });
 
+$(document).on("pagehide", "#users", function()
+{
+	$("[href=#users]").removeClass("cyan");
+});
+
 function updateUserList()
 {
     $.mobile.loading("show");
-    $("[href=#users]").removeClass("green");
+    $("[href=#users]").removeClass("cyan");
+
     socket.emit("getAllUsers",
     function(callback)
     {
-        $("#tableUsers tbody tr").remove();
-
-        callback.forEach(function(i)
+        socket.emit("getUnreadMessages",
         {
-            if(i.username != username)
+            "currentUser" : username
+        },
+        function(unread)
+        {
+            var unreadSender;
+            $("#tableUsers tbody tr").remove();
+
+            callback.forEach(function(i)
             {
-                $("#tableUsers tbody").append("<tr onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");' class='border'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.firstName + " " + i.lastName + "</span><span class='floatRight brand bold marginTop'>[" + i.status + "]</span></td></tr>");
-            }
+                unread.forEach(function(u)
+                {
+                    if(u.sender == i.username)
+                        unreadSender = u.sender;
+                });
+
+                if(i.username != username)
+                {
+                    var tr = $.parseHTML("<tr onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");' class='border'><td class='noBorder horizontalPadding'><input type='hidden' class='hiddenUserField' value='" + i.username + "'/><span class='floatLeft marginTop'>" + i.firstName + " " + i.lastName + "</span><span class='floatRight brand bold marginTop'>[" + i.status + "]</span></td></tr>");
+                    
+                    if(i.username == unreadSender)
+                        $(tr).addClass("cyan");
+
+                    $("#tableUsers tbody").append(tr);
+                }
+            });
         });
 
         $.mobile.loading("hide");

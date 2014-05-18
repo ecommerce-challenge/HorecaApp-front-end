@@ -51,12 +51,20 @@ a {
 	background: #461f70 !important;
 }
 
+.active {
+	background: #535353 !important;
+}
+
 .green {
 	background: #446e21 !important;
 }
 
-.active {
-	background: #535353 !important;
+.red {
+	background: #8a211f !important;
+}
+
+.cyan {
+	background: #3d6973 !important;
 }
 
 .brand {
