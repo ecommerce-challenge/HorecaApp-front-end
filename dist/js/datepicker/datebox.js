@@ -7,8 +7,8 @@
 
 (function($) {
 	$.extend( $.mobile.datebox.prototype.options, {
-		themeButton: 'a',
-		themeInput: 'a',
+		themeButton: 'b',
+		themeInput: 'b',
 		useSetButton: true,
 		validHours: false,
 		repButton: true
@@ -118,10 +118,10 @@
 				divPlus = $('<fieldset>'),
 				divIn = divBase.clone(),
 				divMinus = divPlus.clone(),
-				inBase = $("<input type='"+w.inputType+"' />").addClass('ui-input-text ui-corner-all ui-shadow-inset ui-body-'+o.themeInput),
-				inBaseT = $("<input type='text' />").addClass('ui-input-text ui-corner-all ui-shadow-inset ui-body-'+o.themeInput),
+				inBase = $("<input type='"+w.inputType+"' />").addClass('ui-input-text ui-shadow-inset ui-body-'+o.themeInput),
+				inBaseT = $("<input type='text' />").addClass('ui-input-text ui-shadow-inset ui-body-'+o.themeInput),
 				butBase = $("<div></div>"),
-				butPTheme = {theme: o.themeButton, icon: 'plus', iconpos: 'bottom', corners:true, shadow:true, inline:true},
+				butPTheme = {theme: o.themeButton, icon: 'plus', iconpos: 'bottom', shadow:true, inline:true},
 				butMTheme = $.extend({}, butPTheme, {icon: 'minus', iconpos: 'top'});
 			
 			if ( typeof w.d.intHTML !== 'boolean' ) {
@@ -224,7 +224,7 @@
 				
 				if ( o.useSetButton ) {
 					$('<a href="#">'+((o.mode==='datebox')?w.__('setDateButtonLabel'):w.__('setTimeButtonLabel'))+'</a>')
-						.appendTo(y).buttonMarkup({theme: o.theme, icon: 'check', iconpos: 'left', corners:true, shadow:true})
+						.appendTo(y).buttonMarkup({theme: o.theme, shadow:true})
 						.on(o.clickEventAlt, function(e) {
 							e.preventDefault();
 							if ( w.dateOK === true ) {
@@ -236,7 +236,7 @@
 				}
 				if ( o.useClearButton ) {
 					$('<a href="#">'+w.__('clearButton')+'</a>')
-						.appendTo(y).buttonMarkup({theme: o.theme, icon: 'delete', iconpos: 'left', corners:true, shadow:true})
+						.appendTo(y).buttonMarkup({theme: o.theme, icon: 'delete', iconpos: 'left', shadow:true})
 						.on(o.clickEventAlt, function(e) {
 							e.preventDefault();
 							w.d.input.val('');

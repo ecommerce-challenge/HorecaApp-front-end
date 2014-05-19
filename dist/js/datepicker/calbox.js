@@ -271,7 +271,7 @@
 						if (cal.gen[row][col][0]) {
 							$("<div>"+String(cal.gen[row][col][0])+"</div>")
 								.addClass( cal.thisMonth === cal.gen[row][col][1] ?
-									(uid+'griddate ui-corner-all ui-btn ui-btn-'+(o.mobVer<140?'up-':'')+checked.theme + (checked.ok?'':' '+uid+'griddate-disable')):
+									(uid+'griddate ui-btn ui-btn-'+(o.mobVer<140?'up-':'')+checked.theme + (checked.ok?'':' '+uid+'griddate-disable')):
 									(uid+'griddate '+uid+'griddate-empty')
 								)
 								.jqmData('date', ((o.calWeekMode)?cal.weekMode:cal.gen[row][col][0]))
