@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<!-- external dependencies -->
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
 		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -20,6 +21,11 @@
 		<script src="js/scanner.js"></script>
 		<script src="js/chat.js"></script>
 		<script src="js/users.js"></script>
+
+		<link rel="stylesheet" href="dist/js/datepicker/databoxcss.css">
+		<script src="dist/js/datepicker/core.js"></script>
+		<script src="dist/js/datepicker/datebox.js"></script>
+		<script src="dist/js/datepicker/calbox.js"></script>
 
 		<title>Horeca Activity</title>
 	</head>
@@ -42,13 +48,13 @@
 					<input id="username" type="text" placeholder="Username">
 					<input id="password" type="password" placeholder="Password">
 				</div>
-				<button class="ui-btn ui-btn-b" onclick="login();">Login</button>
+				<button class="smallButton ui-btn ui-btn-b" onclick="login();">Login</button>
 			</div>
 
 			<a id="showLoginError" href="#loginError" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
 
 			<div data-role="popup" id="loginError" data-theme="b" style="max-width: 400px;">
-				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<a href="#" data-rel="back" class="redDelete ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 				<div data-role="header" data-theme="b">
 					<h1>Failed to login</h1>
 				</div>

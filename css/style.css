@@ -290,19 +290,16 @@ table.default tr:nth-child(odd) {
 	border-bottom: 1px solid black !important;
 }
 
-.ui-btn {
+.smallButton {
 	font-size: 8px !important;
 	padding-left: 4px !important;
 	padding-right: 4px !important;
 }
 
-.ui-icon-delete {
+.redDelete {
 	font-size: 9px !important;
 	padding-left: 0px !important;
 	padding-right: 0px !important;
-}
-
-.ui-icon-delete {
 	margin-top: 15px !important;
 	margin-right: 15px !important;
 	background: #73271a !important;

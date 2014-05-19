@@ -6,7 +6,6 @@
 					<tr>
 						<th data-priority="persist">Product</th>
 						<th data-priority="1">Quantity</th>
-						<th data-priority="2">Schedule date</th>
 						<th data-priority="3"></th>
 					</tr>
 				</thead>
@@ -19,18 +18,23 @@
 	<a id="showCustomizeOrder" href="#customizeOrder" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
 
 	<div data-role="popup" id="customizeOrder" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="width: 300px; max-width: 300px;">
-		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+		<a href="#" data-rel="back" class="redDelete ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 		<div data-role="header" data-theme="b">
 			<h1>Customize order</h1>
 		</div>
 		<div role="main" class="ui-content">
 			<div id="orderInfo" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;">
 				<div class="ui-field-contain">
-					<select id="selectSupplier" style="width: 200px;"><option value="None">Select Supplier</option></select>
+					<select class="smallButton" id="selectSupplier" style="width: 200px;"><option value="None">Select Supplier</option></select>
+
+					<div style="visibility:hidden;">
+						<input id="receiveDate" type="date" data-role="datebox" data-options='{"mode": "datebox", "calShowDays": false}' >		
+					</div>	
 				</div>
 			</div>
+
 			<div data-role="controlgroup" data-type="horizontal">
-				<a class="ui-btn blue" onclick="sendOrder();">Send the order</a>
+				<a class="smallButton ui-btn blue" onclick="showDatebox();">Next</a>
 			</div>
 		</div>
 	</div>
@@ -38,27 +42,27 @@
 	<a id="showScannedProduct" href="#scannedProduct" data-rel="popup" data-position-to="window" data-transition="slidedown"></a>
 
 	<div data-role="popup" id="scannedProduct" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="min-width: 270px;">
-		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+		<a href="#" data-rel="back" class="redDelete ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 		<div data-role="header" data-theme="b">
 			<h1 id="scannedProductHeader"><span id="scannedProductBrand" class="brand"></span><span id="scannedProductName"></span></h1>
 		</div>
 		<div role="main" class="ui-content">
 			<div id="scannedProductImage" style="display: none;"></div>
 			<div id="scannedProductDescription" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;"></div>
-			<a id="addToCart" class="ui-btn">Add product to cart</a>
+			<a id="addToCart" class="smallButton ui-btn">Add product to cart</a>
 		</div>
 	</div>
 
 	<div data-role="footer" data-theme="b" data-position="fixed" data-tap-toggle="false">
 		<h1>
 			<div class="footerNavigation" data-role="controlgroup" data-type="horizontal">
-				<a class="ui-btn blue" href="#login" onclick="logout();">Log out</a>
-				<a class="ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
-				<a class="ui-btn" href="#users" data-transition="slide">Users</a>
-				<a class="ui-btn" href="#cart">Cart</a>
-				<a class="ui-btn" href="#items">Search</a>
-				<a class="ui-btn green" onclick="scan();">Scan</a>
-				<a class="ui-btn green" onclick="addCartToOrder();">Create order</a>
+				<a class="smallButton ui-btn blue" href="#login" onclick="logout();">Log out</a>
+				<a class="smallButton ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
+				<a class="smallButton ui-btn" href="#users" data-transition="slide">Users</a>
+				<a class="smallButton ui-btn" href="#cart">Cart</a>
+				<a class="smallButton ui-btn" href="#items">Search</a>
+				<a class="smallButton ui-btn green" onclick="scan();">Scan</a>
+				<a class="smallButton ui-btn green" onclick="addCartToOrder();">Create order</a>
 			</div>
 		</h1>
 	</div>
