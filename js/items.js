@@ -1,5 +1,6 @@
 $(document).on("pageshow", "#items", function()
 {
+    $(".searchbox").val("");
     searchItems();
 });
 
@@ -15,7 +16,9 @@ function searchItems()
         {
             callback.data.forEach(function(i)
             {
-                var tableRow = $.parseHTML("<tr class='selectable'><td class='imageColumn'><input class='it_item_name' type='hidden' value='" + i.item_name + "'></input><input type='hidden' class='it_item_code' value='" + i.item_code + "'></input><div class='image'></div></td><td><div class='itemHeader'><span class='brand'>" + i.brand + "</span> - " + i.item_name + " <span class='smallPrice'>[" + i.barcode + "]</span></div><div class='itemDescription'>" + i.description + "</div></td></tr>");
+                var numericInput = $.parseHTML("<div class='numericInput absolute absBottomRight'><div class='niControlBox'><a class='niPlus niButton niCartPlus'>+</a><a class='niMinus niButton niCartMinus'>-</a></div><input class='niInput niCartInput' type='text' value='0'></div>");
+                var tableRow = $.parseHTML("<tr class='selectable'><td class='imageColumn searchbox-cell'><input class='it_item_name searchbox-textfield' type='hidden' value='" + i.item_name + "'></input><input type='hidden' class='it_item_code' value='" + i.item_code + "'></input><div class='image'></div></td><td><div class='itemHeader'><span class='brand'>" + i.brand + "</span> - " + i.item_name + " <span class='smallPrice'>[" + i.barcode + "]</span></div><div class='itemDescription wordwrap' style='position: relative !important;'>" + i.description + "</div></td></tr>");
+                $(tableRow).find(".itemDescription").append(numericInput);
 
                 if(i.image != null)
                 {
@@ -67,7 +70,8 @@ function addItems()
         {
             var it_item_code = $(this).find(".imageColumn").find(".it_item_code").val();
             var it_item_name = $(this).find(".imageColumn").find(".it_item_name").val();
-            addToCart({"item_code" : it_item_code, "item_name" : it_item_name});
+            var quantity = $(this).find(".niInput").val();
+            addToCart({"item_code" : it_item_code, "item_name" : it_item_name, "quantity" : quantity});
         }
     });
 

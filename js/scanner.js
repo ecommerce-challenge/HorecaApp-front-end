@@ -11,10 +11,14 @@ function scan()
             {
                 if(callback != null)
                 {
+                    callback.data.wasScanned = true;
                     $("#addToCart").attr("onclick", "addToCart(" + JSON.stringify(callback.data) + ");");
                     $("#addToCart").show();
+                    $("#scannedProductQuantity").val("0");
                     $("#scannedProductName").text(" - " + callback.data.item_name);
                     $("#scannedProductBrand").text("[" + callback.data.brand + "]");
+                    $("#scannedProductDescription").css({"margin-top" : "30px"});
+                    $("#scannedNumericInput").css({"display" : ""});
                     
                     if(callback.data.image != null)
                     {
@@ -50,7 +54,10 @@ function scan()
                     $("#scannedProductName").text("Product not found");
                     $("#scannedProductBrand").text("");
                     $("#scannedProductImage").css({"display" : "none", "background" : "none"});
+                    $("#scannedProductQuantity").css({"display" : "none"});
                     $("#scannedProductDescription").text("The product with barcode: " + result.text + " was not found, please make sure that the barcode isn't damaged.");
+                    $("#scannedProductDescription").css({"margin-top" : "0px"});
+                    $("#scannedNumericInput").css({"display" : "none"});
                 }
 
                 $("#showScannedProduct").trigger("click");

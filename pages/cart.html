@@ -1,14 +1,8 @@
 <div id="cart" data-role="page" data-theme="b">
 	<div class="ui-content" data-role="main">
 		<div id="cartContents" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;">
-			<table data-role="table" data-mode="reflow" class="default" id="tableCart" style="display: none;">
-				<thead>
-					<tr>
-						<th data-priority="persist">Product</th>
-						<th data-priority="1">Quantity</th>
-						<th data-priority="3"></th>
-					</tr>
-				</thead>
+			<table class="default" id="tableCart" style="display: none;">
+				<thead style="display: none !important;"><tr></tr></thead>
 				<tbody></tbody>
 			</table>
 			<p id="cartEmpty">Your cart is empty, please add products to your cart before you create the order</p>
@@ -47,6 +41,7 @@
 			<h1 id="scannedProductHeader"><span id="scannedProductBrand" class="brand"></span><span id="scannedProductName"></span></h1>
 		</div>
 		<div role="main" class="ui-content">
+			<div class='numericInput absolute' id='scannedNumericInput' style='top: 156px !important; right: 100px !important; display: none;'><div class='niControlBox'><a class='niPlus niButton'>+</a><a class='niMinus niButton'>-</a></div><input class='niInput' id='scannedProductQuantity' type='text' value='0' data-role="none"></div>
 			<div id="scannedProductImage" style="display: none;"></div>
 			<div id="scannedProductDescription" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;"></div>
 			<a id="addToCart" class="smallButton ui-btn">Add product to cart</a>
@@ -58,7 +53,7 @@
 			<div class="footerNavigation" data-role="controlgroup" data-type="horizontal">
 				<a class="smallButton ui-btn blue" href="#login" onclick="logout();">Log out</a>
 				<a class="smallButton ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
-				<a class="smallButton ui-btn" href="#users" data-transition="slide">Users</a>
+				<a class="smallButton ui-btn" href="#contact" data-transition="slide" data-direction="reverse">Contact</a>
 				<a class="smallButton ui-btn" href="#cart">Cart</a>
 				<a class="smallButton ui-btn" href="#items">Search</a>
 				<a class="smallButton ui-btn green" onclick="scan();">Scan</a>

@@ -1,6 +1,7 @@
 <div id="items" data-role="page" data-theme="b">
 	<div class="ui-content" data-role="main">
 		<div id="itemContents" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;">
+		<input type="search" class="searchbox" table-link="tableItems" data-mini="true" placeholder="Search by item name" data-theme="b"/>
 			<table class="default" id="tableItems">
 				<tbody></tbody>
 			</table>
@@ -12,7 +13,7 @@
 			<div class="footerNavigation" data-role="controlgroup" data-type="horizontal">
 				<a class="smallButton ui-btn blue" href="#login" onclick="logout();">Log out</a>
 				<a class="smallButton ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
-				<a class="smallButton ui-btn" href="#users" data-transition="slide" data-direction="reverse">Users</a>
+				<a class="smallButton ui-btn" href="#contact" data-transition="slide" data-direction="reverse">Contact</a>
 				<a class="smallButton ui-btn" href="#cart" data-transition="slide" data-direction="reverse">Cart</a>
 				<a class="smallButton ui-btn" href="#items" data-transition="slide">Search</a>
 				<a class="smallButton ui-btn green" onclick="addItems();">Add to cart</a>

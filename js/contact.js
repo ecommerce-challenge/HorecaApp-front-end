@@ -14,19 +14,19 @@ $(document).ready(function()
     });
 });
 
-$(document).on("pageshow", "#users", function()
+$(document).on("pageshow", "#contact", function()
 {
     updateUserList();
 });
 
-$(document).on("pagehide", "#users", function()
+$(document).on("pagehide", "#contact", function()
 {
-	$("[href=#users]").removeClass("cyan");
+	$("[href=#contact]").removeClass("cyan");
 });
 
 function updateUserList()
 {
-    $("[href=#users]").removeClass("cyan");
+    $("[href=#contact]").removeClass("cyan");
     $.mobile.loading("show");
 
     socket.emit("getAllUsers",

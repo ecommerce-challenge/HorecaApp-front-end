@@ -16,8 +16,15 @@ function updateOrderList()
         {
             callback.data.forEach(function(i)
             {
-                var row = "<tr class='border' onclick='getOrderDetails(" + JSON.stringify(i.name) + ")'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.name + " <span class='bold brand'>[" + i.supplier + "]</span></span><span class='floatRight smallPrice bold marginTop'>" + i.creation.substring(0, 19) + "</span></td></tr>";
-                $("#tableOrders tbody").append(row);
+                if(i.status != "Cancelled")
+                {
+                    if(i.status == "Draft")
+                        var row = "<tr class='border' onclick='getOrderDetails(" + JSON.stringify(i.name) + ")'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.name + " <span class='bold brand'>[" + i.supplier + "]</span></span><span class='floatRight smallPrice bold marginTop'><span class='redBrand'>[Pending]</span> - " + i.creation.substring(0, 19) + "</span></td></tr>";
+                    else
+                        var row = "<tr class='border' onclick='getOrderDetails(" + JSON.stringify(i.name) + ")'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.name + " <span class='bold brand'>[" + i.supplier + "]</span></span><span class='floatRight smallPrice bold marginTop'><span class='greenBrand'>[" + i.status + "]</span> - " + i.creation.substring(0, 19) + "</span></td></tr>";
+                   
+                    $("#tableOrders tbody").append(row);
+                }
             });
         }
         else

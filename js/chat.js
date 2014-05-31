@@ -17,7 +17,7 @@ $(document).ready(function()
 
         if(contact != data.sender)
         {
-            $("[href=#users]").addClass("cyan");
+            $("[href=#contact]").addClass("cyan");
         }
     });
 });

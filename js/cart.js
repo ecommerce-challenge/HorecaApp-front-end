@@ -1,3 +1,48 @@
+$(document).ready(function()
+{
+    // custom cart numeric input box events
+    $(document).on("click", ".niCartPlus", function(e)
+    {
+        e.stopPropagation();
+        var button = $(this);
+        var input = $(button).parent().parent().find(".niInput");
+        var value = $(input).val();
+        var tr = $(button).closest("tr");
+
+        if(parseInt(value) > 0)
+            $(tr).addClass("selected");
+        else
+            $(tr).removeClass("selected");
+    });
+
+    $(document).on("click", ".niCartMinus", function(e)
+    {
+        e.stopPropagation();
+        var button = $(this);
+        var input = $(button).parent().parent().find(".niInput");
+        var value = $(input).val();
+        var tr = $(button).closest("tr");
+
+        if(parseInt(value) > 0)
+            $(tr).addClass("selected");
+        else
+            $(tr).removeClass("selected");
+    });
+
+    $(document).on("keyup", ".niCartInput", function(e)
+    {
+        e.stopPropagation();
+        var input = $(this);
+        var value = $(input).val();
+        var tr = $(input).closest("tr");
+
+        if(parseInt(value) > 0)
+            $(tr).addClass("selected");
+        else
+            $(tr).removeClass("selected");
+    });
+});
+
 $(document).on("pageshow", "#cart", function()
 {
     checkCartEmpty()
@@ -27,10 +72,12 @@ function showCart()
 
 function addToCart(product)
 {
+    if(product.wasScanned)
+        product.quantity = $("#scannedProductQuantity").val();
+
     $("#scannedProduct").popup("close");
-    var date = new Date();
-    var today = date.getFullYear() + "-mm-dd";
-    $("#tableCart tbody").append("<tr class='border'><td class='item_code tableHeader smallRow noBorder'><input class='tableTextfield' type='hidden' value='" + product.item_code + "'>" + product.item_name + "</td><td class='quantity smallRow noBorder'><input class='tableTextfield maxWidth' type='text' placeholder='Quantity'></td><td class='noBorder'><a class='ui-btn tableButton maxWidth' onclick='removeFromCart(this);'>Remove</a></td></tr>");
+    var numericInput = "<div class='numericInput' style='height: 30px !important; width: 94px !important; border: none !important;'><div class='niControlBox'><a class='niPlus niButton' style='height: 30px !important; width: 30px !important; line-height: 30px !important;'>+</a><a class='niMinus niButton' style='height: 30px !important; width: 30px !important; line-height: 30px !important;'>-</a></div><input class='niInput tableTextfield' style='height: 28px !important; width: 31px !important; text-align: center !important;' type='text' value='" + product.quantity + "'></div>";
+    $("#tableCart tbody").append("<tr class='border'><td class='item_code tableHeader smallRow noBorder' style='border-right: 1px solid black !important;'><input class='tableTextfield' type='hidden' value='" + product.item_code + "'>" + product.item_name + "</td><td class='quantity noBorder' style='width: 93px;'>" + numericInput + "</td><td class='noBorder' style='width: 65px; border-left: 1px solid black !important;'><a class='ui-btn tableButton maxWidth red' onclick='removeFromCart(this);'>Remove</a></td></tr>");
     checkCartEmpty();
 }
 
@@ -50,14 +97,14 @@ function addCartToOrder()
         {
             var quantity = $(this).find(".quantity").find(".tableTextfield").val();
 
-            if($.trim(quantity) == "")
+            if($.trim(quantity) == "" || parseInt(quantity) <= 0)
             {
-                $(this).find(".quantity").find(".tableTextfield").addClass("required");
+                $(this).find(".tableHeader").addClass("required");
                 passedValidations = false;
             }
             else
             {
-                $(this).find(".quantity").find(".tableTextfield").removeClass("required");
+                $(this).find(".tableHeader").removeClass("required");
             }
         });
 
