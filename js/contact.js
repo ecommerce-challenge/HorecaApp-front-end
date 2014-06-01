@@ -1,19 +1,3 @@
-$(document).ready(function()
-{
-    socket.on("getUsers", function(data)
-    {
-        $("#tableUsers tbody tr").remove();
-
-        data.forEach(function(i)
-        {
-            if(i.username != username)
-            {
-                $("#tableUsers tbody").append("<tr onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");' class='border'><td class='noBorder horizontalPadding'><span class='floatLeft marginTop'>" + i.firstName + " " + i.lastName + "</span><span class='floatRight brand bold marginTop'>[" + i.status + "]</span></td></tr>");
-            }
-        });
-    });
-});
-
 $(document).on("pageshow", "#contact", function()
 {
     updateUserList();
@@ -51,7 +35,13 @@ function updateUserList()
 
                 if(i.username != username)
                 {
-                    var tr = $.parseHTML("<tr onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");' class='border'><td class='noBorder horizontalPadding'><input type='hidden' class='hiddenUserField' value='" + i.username + "'/><span class='floatLeft marginTop'>" + i.firstName + " " + i.lastName + "</span><span class='floatRight brand bold marginTop'>[" + i.status + "]</span></td></tr>");
+                    var prefix = "at";
+
+                    if(i.role == "Owner")
+                        prefix = "of"
+
+                    var role = "<span class='greenBrand'>" + i.role + "</span> " + prefix + " <span class='brand'>" + i.company + "</span>";
+                    var tr = $.parseHTML("<tr onclick='getConversation(" + JSON.stringify(i.username) + ", " + JSON.stringify(i.firstName + " " + i.lastName) + ");' class='border'><td class='noBorder horizontalPadding searchbox-cell'><input type='hidden' class='hiddenUserField' value='" + i.username + "'/><input class='searchbox-textfield' type='hidden' value='" + i.company + "'/><span class='floatLeft marginTop'>" + i.firstName + " " + i.lastName + "</span><span class='floatRight marginTop smallPrice'>" + role + "</span></td></tr>");
                     
                     if(i.username == unreadSender)
                         $(tr).addClass("cyan");
