@@ -1,8 +1,8 @@
-<div id="items" data-role="page" data-theme="b">
+<div id="purchase_history" data-role="page" data-theme="b">
 	<div class="ui-content" data-role="main">
 		<div id="itemContents" style="border-bottom: 1px solid #1d1d1d; padding-bottom: 10px;">
-		<input type="search" class="searchbox" table-link="tableItems" data-mini="true" placeholder="Search by item name" data-theme="b"/>
-			<table class="default" id="tableItems">
+		<input type="search" class="searchbox" table-link="tablePurchaseHistory" data-mini="true" placeholder="Search by item name" data-theme="b"/>
+			<table class="default" id="tablePurchaseHistory">
 				<tbody></tbody>
 			</table>
 		</div>
@@ -15,9 +15,9 @@
 				<a class="smallButton ui-btn" href="#orders" data-transition="slide" data-direction="reverse">Orders</a>
 				<a class="smallButton ui-btn" href="#contact" data-transition="slide" data-direction="reverse">Contact</a>
 				<a class="smallButton ui-btn" href="#cart" data-transition="slide" data-direction="reverse">Cart</a>
-				<a class="smallButton ui-btn" href="#items" data-transition="slide">Items</a>
+				<a class="smallButton ui-btn" href="#items" data-transition="slide" data-direction="reverse">Items</a>
 				<a class="smallButton ui-btn" href="#purchase_history" data-transition="slide">History</a>
-				<a class="smallButton ui-btn green" onclick="addItems();">Add to cart</a>
+				<a class="smallButton ui-btn green" onclick="addPHToCart();">Add to cart</a>
 			</div>
 		</h1>
 	</div>
