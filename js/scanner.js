@@ -42,7 +42,18 @@ function scan()
                     }
                     else
                     {
-                        $("#scannedProductImage").css({"display" : "none", "background" : "none"});
+                        $("#scannedProductImage").css
+                        ({
+                            "display" : "",
+                            "background" : "url('img/noimage.png')",
+                            "border" : "1px solid black",
+                            "margin" : "0 auto",
+                            "margin-bottom" : "10px",
+                            "width" : "100px",
+                            "height" : "100px",
+                            "background-size" : "100% 100%",
+                            "background-repeat" : "no-repeat" 
+                        });
                     }
 
                     $("#scannedProductDescription").text(callback.data.description);
